@@ -47,23 +47,5 @@ module.exports = {
     // ...
   },
 
-  // configureWebpack 或 chainWebpack 调整内部 webpack 配置
-  configureWebpack: config => {
-    if (process.env.NODE_ENV === 'production') {
-      // 生产环境配置
-      config.plugins.push(new MyPlugin());
-    } else {
-      // 开发环境配置
-    }
-  },
 
-  chainWebpack: config => {
-    config.plugin('html').tap(args => {
-      if (process.env.NODE_ENV === 'production') {
-        // 修改html-webpack-plugin的配置
-        args[0].minify.removeComments = true;
-      }
-      return args;
-    });
-  }
 };
