@@ -4,13 +4,16 @@
 			<div v-if="showPayment" class="payment-card">
 				<h2>USDT Payment 美元支付（USDT Payment）</h2>
 				<p>请将USDT金额发送至以下地址：（Please send the USDT amount to the following address:）</p>
+
+				<el-input  v-model="input" style="width: 240px" placeholder="请输入邮箱,用于接收" clearable />
 				<p></p>
+
+				<img :src="qrcodeUrl" alt="USDT QR Code" class="qrcode" />
 				<div class="usdt-address">
 					{{ usdtAddress }}
 				</div>
-				<img :src="qrcodeUrl" alt="USDT QR Code" class="qrcode" />
-
-				<p style="color: red;">{{ price }} usdt</p>
+				<p style="color:#2dffa0; font-weight: bold">{{ price }} usdt</p>
+				<p> 该地址仅支持trx/trc20相关资产</p>
 
 				<el-button @click="confirmPayment">确认已付款</el-button>
 			</div>
@@ -25,22 +28,48 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { ElMessage } from 'element-plus'
+
 export default {
 	data() {
 		return {
-			price:'',
+			input: '',
+			price: '',
 			usdtAddress: "TMDA2iaMqbk5GhVfa5F5dUFCYe7N8xRVtN",
 			qrcodeUrl: require('../assets/usdt.jpeg'),
 			showPayment: true,
 			paymentConfirmed: false,
 		};
 	},
-	created(){
+	created() {
 		this.price = this.$route.params.id;
 
 	},
 	methods: {
 		confirmPayment() {
+			const workerUrl = 'https://api.lsimply.us.kg'; // 替换为你的 Cloudflare Workers URL
+
+			axios.post(workerUrl, {
+				input: this.input,
+			})
+				.then((response) => {
+					console.log(response)
+					ElMessage({
+						showClose: true,
+						message: 'Message sent successfully!',
+						type: 'success',
+					})
+				})
+				.catch((error) => {
+
+					ElMessage({
+						showClose: true,
+						message: 'Failed to send message.',
+						type: 'error',
+					})
+				});
+
 			this.showPayment = false;
 			setTimeout(() => {
 				this.paymentConfirmed = true;
