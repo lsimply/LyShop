@@ -12,7 +12,7 @@
 
 				<p style="color: red;">{{ price }} usdt</p>
 
-				<el-button @click="confirmPayment">确认付款</el-button>
+				<el-button @click="confirmPayment">确认已付款</el-button>
 			</div>
 		</transition>
 		<transition name="slide">
