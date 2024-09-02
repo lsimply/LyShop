@@ -1,9 +1,20 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+<!--  <nav>-->
+<!--    <router-link to="/">Home</router-link> |-->
+<!--    <router-link to="/about">About</router-link>  |-->
+<!--    <router-link to="/index">Index</router-link>-->
+<!--  </nav>-->
+
+<!--  <div>-->
+<!--    <el-button color="#626aef" :dark="isDark">Default</el-button>-->
+<!--    <el-button color="#626aef" :dark="isDark" plain>Plain</el-button>-->
+
+<!--    <el-button color="#626aef" :dark="isDark" disabled>Disabled</el-button>-->
+<!--    <el-button color="#626aef" :dark="isDark" disabled plain>-->
+<!--      Disabled Plain-->
+<!--    </el-button>-->
+<!--  </div>-->
+  <router-view></router-view>
 </template>
 
 <style>
@@ -13,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
+
+
 }
 
 nav {
