@@ -82,12 +82,11 @@ export default {
         // 邮箱验证通过，执行付款确认逻辑
 		const workerUrl = '/api';
 
-axios.get(workerUrl, {
+axios.post(workerUrl, {
   input: this.input,
   product:this.product,
 })
 .then((response) => {
-	console.log(response)
 		  ElMessage({
     showClose: true,
     message: '提交成功(Message sent successfully!)',
