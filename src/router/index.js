@@ -26,10 +26,15 @@ const routes = [
     component:Detail ,
   },
   {
-    path: "/pay/:id",
+    path: "/pay",
     name: "Pay",
     component:Pay ,
   },
+  // {
+  //   path: "/hh",
+  //   name: "Pay",
+  //   component:Pay ,
+  // },
   {
     path: "/about",
     name: "about",

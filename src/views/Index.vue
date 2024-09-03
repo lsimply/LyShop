@@ -97,7 +97,7 @@
 
         <div class="flex flex-wrap gap-4">
           <div class="a">
-            <el-card shadow="hover" v-for="(item, index) in result.data" :key="index" @click="Detail(item.price)" >
+            <el-card shadow="hover" v-for="(item, index) in result.data" :key="index" @click="Detail(item)" >
 
 
               <div class="content1" >
@@ -112,75 +112,6 @@
           </div>
         </div>
 
-
-        <!-- <div class="jz">
-          <el-form :inline="true" label-width="70px" :model="shop" class="demo-form-inline">
-            <el-form-item label="商品分类">
-              <el-select
-                  v-model="shop.fenlei"
-                  placeholder="商品分类"
-                  clearable
-              >
-                <el-option label="Telegram 帐号" value="Telegram 帐号"/>
-                <el-option label="X账号" value="X账号"/>
-                <el-option label="TikTok 美老号带粉丝" value="TIKYTOK账号"/>
-                <el-option label="WhatsApp产品" value="WhatsApp产品"/>
-                <el-option label="LiNE" value="LiNE"/>
-                <el-option label="苹果ID" value="苹果ID"/>
-                <el-option label="小火箭" value="小火箭"/>
-                <el-option label="代理IP" value="代理IP"/>
-                <el-option label="ChatGPT 账号" value="ChatGPT 账号"/>
-                <el-option label="苹果礼品卡" value="苹果礼品卡"/>
-                <el-option label="其他需求请联系" value="其他需求请联系"/>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="选择国家">
-              <el-select
-                  v-model="shop.from"
-                  placeholder="选择国家"
-                  clearable
-              >
-                <el-option label="随机" value="随机"/>
-                <el-option label="CN/中国+86" value="CN/中国+86"/>
-                <el-option label="CA/加拿大+1" value="CA/加拿大+1"/>
-                <el-option label="US/美国+1" value="US/美国+1"/>
-                <el-option label="TW/台湾+886" value="TW/台湾+886"/>
-                <el-option label="SG/新加坡+65" value="SG/新加坡+65"/>
-                <el-option label="其他需求请联系" value="其他需求请联系"/>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="商品单价">
-              <t-tag theme="warning" style="font-size: 15px;" variant="light" >{{shop.price}}usdt</t-tag>
-            </el-form-item>
-            <el-form-item label="商品库存">
-              <t-tag shape="round"  theme="primary">&nbsp {{shop.kucun}} &nbsp </t-tag>
-            </el-form-item>
-            <el-form-item label="购买数量">
-              <el-input-number v-model="shop.num" :min="1" :max="10" @change="handleChange"/>
-            </el-form-item>
-
-            <el-form-item label="选择性别">
-              <el-radio-group v-model="shop.sex">
-                <el-radio value="sj">随机</el-radio>
-                <el-radio value="boy">男</el-radio>
-                <el-radio value="girl">女</el-radio>
-              </el-radio-group>
-            </el-form-item>
-
-            <el-form-item label="电子邮箱">
-              <el-input require v-model="shop.email" placeholder="下单后系统自动发送卡密到该邮箱"/>
-            </el-form-item> -->
-
-        <!--          <t-space direction="vertical">-->
-        <!--            <t-message theme="success">总金额 0.00 usdt</t-message>-->
-        <!--          </t-space>-->
-        <!-- <el-alert title="总金额 0.00 " style="width: 80%"  description="usdt" type="success" :closable="false"/>
-            <br>
-            <el-form-item style="width: 100%">
-              <el-button style="width: 80%;padding: 0px 10px 0px 10px" type="primary" @click="onSubmit">立即下单</el-button>
-            </el-form-item>
-          </el-form>
-        </div> -->
 
 
 
@@ -1418,8 +1349,10 @@ export default {
     this.result = this.result2
   },
   methods: {
-    Detail(price){
-      this.$router.push({ name: 'Pay', params: { id:Math.ceil(price / 7.2) } });
+    Detail(item){
+      this.$store.commit('setProduct', item);
+
+      this.$router.push({ name: 'Pay'});
 
     },
     rest(ms) {

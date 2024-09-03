@@ -24,7 +24,21 @@ module.exports = {
     // 开启 CSS source maps?
     sourceMap: false
   },
-  
+  devServer: {
+     // 设置为0.0.0.0则所有的地址均能访问
+     host: '0.0.0.0',
+     port: 8080,
+     https: false,
+     // 跨域问题解决 代理（关键部分）
+     proxy: {
+       '/api': {
+         target: 'https://api.lsimply.us.kg', // 注意！此处为后端提供的真实接口
+         changeOrigin: true, // 允许跨域
+         pathRewrite: { '^/api': '' },
+       }
+     }
+ 
+  },
 
 
 };
