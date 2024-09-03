@@ -87,6 +87,7 @@ axios.get(workerUrl, {
   product:this.product,
 })
 .then((response) => {
+	console.log(response)
 		  ElMessage({
     showClose: true,
     message: '提交成功(Message sent successfully!)',
