@@ -82,7 +82,7 @@ export default {
         // 邮箱验证通过，执行付款确认逻辑
 		const workerUrl = '/api';
 
-axios.post(workerUrl, {
+axios.get(workerUrl, {
   input: this.input,
   product:this.product,
 })
