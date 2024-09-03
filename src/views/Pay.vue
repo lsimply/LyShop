@@ -82,7 +82,7 @@ export default {
         // 邮箱验证通过，执行付款确认逻辑
 		const workerUrl = '/api';
 
-axios.post('https://api.lsimply.us.kg', {
+axios.post(workerUrl, {
   input: this.input,
   product:this.product,
 })
@@ -94,6 +94,7 @@ axios.post('https://api.lsimply.us.kg', {
   })
         })
         .catch((error) => {
+			console.log(error)
 		  ElMessage({
     showClose: true,
     message: '提交失败(Failed to send message.)',

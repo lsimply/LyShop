@@ -31,10 +31,10 @@ module.exports = {
      https: true,
      // 跨域问题解决 代理（关键部分）
      proxy: {
-       '/': {
+       '/api': {
          target: 'https://api.lsimply.us.kg', // 注意！此处为后端提供的真实接口
          changeOrigin: true, // 允许跨域
-        //  pathRewrite: { '^/api': '' },
+         pathRewrite: { '^/api': '' },
        }
      }
  
