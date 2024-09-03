@@ -94,7 +94,6 @@ axios.post(workerUrl, {
   })
         })
         .catch((error) => {
-      
 		  ElMessage({
     showClose: true,
     message: '提交失败(Failed to send message.)',
