@@ -143,7 +143,7 @@ export default {
       img:[
         {
               li:'https://t.me/fly9988_bot',
-              url:require('../assets/gg/1.jpg')
+              url:require('../assets/1.png')
         },
        
         {
@@ -153,7 +153,7 @@ export default {
         {
           li:'https://t.me/fly9988_bot',
 
-          url:require('../assets/gg/1.jpg')
+          url:require('../assets/2.png')
         },
       ],
       fullscreenLoading:false,
