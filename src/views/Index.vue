@@ -2,7 +2,9 @@
   <!---->
   
   <div class="index">
-   
+    <GuanGao v-if="showModal" @close="closeModal" :isVisible="showModal" />
+    
+
     <div>
   <el-carousel :interval="4000" type="card" height="200px">
     <el-carousel-item v-for="item in img" :key="item">
@@ -125,14 +127,19 @@
 </template>
 
 <script>
+import GuanGao from '@/components/GuanGao.vue';
 import axios from 'axios';
 import { ElLoading } from 'element-plus'
 
 
 
 export default {
+  components: {
+    GuanGao
+  },
   data() {
     return {
+      showModal: false,
       img:[
         {
               url:require('../assets/gg/1.jpg')
@@ -1349,6 +1356,12 @@ export default {
     this.result = this.result2
   },
   methods: {
+    openModal() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
     Detail(item){
       this.$store.commit('setProduct', item);
 
@@ -1409,6 +1422,10 @@ export default {
       return this.baseUrl + cover;
     }
   },
+  mounted() {
+    // 页面加载后自动显示弹出框
+    this.openModal();
+  }
 
 };
 </script>
