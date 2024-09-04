@@ -70,7 +70,7 @@ export default {
 		validateEmail() {
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(this.input)) {
-        this.emailError = '*请输入有效的邮箱地址';
+        this.emailError = '请输入有效的邮箱地址';
         return false;
       } else {
         this.emailError = '';
@@ -80,7 +80,7 @@ export default {
 			if (this.validateEmail()) {
 
         // 邮箱验证通过，执行付款确认逻辑
-		const workerUrl = '/api';
+		const workerUrl = '/t';
 
 axios.post(workerUrl, {
   input: this.input,
@@ -94,7 +94,7 @@ axios.post(workerUrl, {
   })
         })
         .catch((error) => {
-			console.log(error)
+      console.log(error)
 		  ElMessage({
     showClose: true,
     message: '提交失败(Failed to send message.)',
